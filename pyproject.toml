@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "email-sanitizer"
+version = "0.1.0"
+description = "Sanitize email content before handing it to an LLM, to defend against prompt injection."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Phill" }]
+dependencies = [
+    "mcp>=2.0.0",
+    "google-api-python-client>=2.0.0",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.0.0",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Security",
+]
+
+[project.scripts]
+email-sanitize = "email_sanitizer.cli:main"
+email-sanitizer-mcp = "email_sanitizer.mcp_server:main"
+
+[tool.setuptools.packages.find]
+include = ["email_sanitizer*"]
